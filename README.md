@@ -14,7 +14,7 @@ overflow: hidden;
 
 Файлы по папкам распределены по системе БЭМ.
 
-[Сслыка на Github Pages](https://yuliaovchinnikova.github.io/russian-travel/index.html)
+[Сслыка на Github Pages](https://yuliaovchinnikova.github.io/mesto/index.html)
 
 ### Обзор
 
