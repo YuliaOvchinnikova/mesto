@@ -3,91 +3,163 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <link rel="stylesheet" href="./styles/index.css" /> -->
-    <title>Научиться учиться</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>Место</title>
   </head>
-  <body>
-    <header class="header">
-      <img
-        src="./images/logo.svg"
-        alt="Логотип сайта Место"
-        class="header__logo"
-      />
-    </header>
-    <main class="content">
-      <section class="profile">
+  <body class="body">
+    <div class="page">
+      <header class="header">
         <img
-          src="./images/profile_photo.jpg"
-          alt="Лицо улыбающейся девушки."
-          class="profile__photo"
+          src="./images/logo.svg"
+          alt="Логотип сайта Место"
+          class="header__logo"
         />
-        <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__subname">Исследователь океана</p>
-          <button class="profile__edit-button"></button>
-        </div>
-        <button class="profile__add-button"></button>
-      </section>
-
-      <section class="places">
-        <div class="place">
+      </header>
+      <main class="content">
+        <section class="profile">
           <img
-            src="./images/amsterdam.JPG"
-            alt="Канал Амстердама."
-            class="place__image"
+            src="./images/profile_photo.jpg"
+            alt="Лицо улыбающейся девушки."
+            class="profile__photo"
           />
-          <h2 class="place__name">Амстердам</h2>
-        </div>
 
-        <div class="place">
-          <img
-            src="./images/krasnoyarsk.JPG"
-            alt="Вантовый мост в Красноярске."
-            class="place__image"
-          />
-          <h2 class="place__name">Красноярск</h2>
-        </div>
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="interactive-button profile__edit-button"></button>
+            <p class="profile__subname">Исследователь океана</p>
+          </div>
+          <button class="interactive-button profile__add-button"></button>
+        </section>
 
-        <div class="place">
-          <img
-            src="./images/zurich.JPG"
-            alt="Вид со смотровой на Цурих."
-            class="place__image"
-          />
-          <h2 class="place__name">Цурих</h2>
-        </div>
+        <section class="popup">
+          <div class="popup__container">
+            <button class="interactive-button popup__closebtn"></button>
+            <div class="poput__content">
+              <h2 class="popup__heading">Редактировать профиль</h2>
+              <form class="popup__form">
+                <input
+                  class="popup__input popup__name"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Жак-Ив Кусто"
+                />
+                <input
+                  class="popup__input popup__subname"
+                  type="text"
+                  id="subname"
+                  name="subname"
+                  placeholder="Исследователь океана"
+                />
+                <button type="submit" class="popup__savebtn">Сохранить</button>
+              </form>
+            </div>
+          </div>
+        </section>
 
-        <div class="place">
-          <img
-            src="./images/stockholm.JPG"
-            alt="Метро Стокгольма."
-            class="place__image"
-          />
-          <h2 class="place__name">Стокгольм</h2>
-        </div>
+        <section class="places">
+          <div class="place">
+            <img
+              src="./images/krasnoyarsk.jpg"
+              alt="Вантовый мост в Красноярске."
+              class="place__image"
+            />
+            <div class="place__container">
+              <h2 class="place__name">Красноярск</h2>
+              <img
+                src="./images/like.svg"
+                alt="белое сердечко с черной обводной"
+                class="place__like"
+              />
+            </div>
+          </div>
 
-        <div class="place">
-          <img
-            src="./images/helsinki.JPG"
-            alt="Графити и плющ в Хельсинки."
-            class="place__image"
-          />
-          <h2 class="place__name">Хельсинки</h2>
-        </div>
+          <div class="place">
+            <img
+              src="./images/bergen.jpeg"
+              alt="Туман в Бергене."
+              class="place__image"
+            />
+            <div class="place__container">
+              <h2 class="place__name">Берген</h2>
+              <img
+                src="./images/like.svg"
+                alt="белое сердечко с черной обводной"
+                class="place__like"
+              />
+            </div>
+          </div>
 
-        <div class="place">
-          <img
-            src="./images/bergen.jpeg"
-            alt="Туман в Бергене."
-            class="place__image"
-          />
-          <h2 class="place__name">Берген</h2>
-        </div>
-      </section>
+          <div class="place">
+            <img
+              src="./images/stockholm.JPG"
+              alt="Метро Стокгольма."
+              class="place__image"
+            />
+            <div class="place__container">
+              <h2 class="place__name">Стокгольм</h2>
+              <img
+                src="./images/like.svg"
+                alt="белое сердечко с черной обводной"
+                class="place__like"
+              />
+            </div>
+          </div>
 
-      <footer class="footer">
-        <p class="footer__copyright">© 2021 Mesto Russia</p>
-      </footer>
-    </main>
+          <div class="place">
+            <img
+              src="./images/amsterdam.JPG"
+              alt="Канал Амстердама."
+              class="place__image"
+            />
+            <div class="place__container">
+              <h2 class="place__name">Амстердам</h2>
+              <img
+                src="./images/like.svg"
+                alt="белое сердечко с черной обводной"
+                class="place__like"
+              />
+            </div>
+          </div>
+
+          <div class="place">
+            <img
+              src="./images/helsinki.JPG"
+              alt="Графити и плющ в Хельсинки."
+              class="place__image"
+            />
+            <div class="place__container">
+              <h2 class="place__name">Хельсинки</h2>
+              <img
+                src="./images/like.svg"
+                alt="белое сердечко с черной обводной"
+                class="place__like"
+              />
+            </div>
+          </div>
+
+          <div class="place">
+            <img
+              src="./images/zurich.JPG"
+              alt="Вид со смотровой на Цурих."
+              class="place__image"
+            />
+            <div class="place__container">
+              <h2 class="place__name">Цюрих</h2>
+              <img
+                src="./images/like.svg"
+                alt="белое сердечко с черной обводной"
+                class="place__like"
+              />
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p class="footer__copyright">© 2021 Mesto Russia</p>
+        </footer>
+      </main>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

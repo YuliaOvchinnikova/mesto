@@ -1,0 +1,11 @@
+.place__like {
+  max-width: 22px;
+  min-height: 19px;
+  object-fit: contain;
+  margin-right: 5px;
+}
+
+.place__like:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
