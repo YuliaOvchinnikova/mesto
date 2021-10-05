@@ -1,6 +1,6 @@
 .popup__heading {
   box-sizing: border-box;
-  margin: 34px 0 46px;
+  margin: 34px auto 46px;
   font-weight: 900;
   font-size: 24px;
   line-height: 1.2;
@@ -9,6 +9,6 @@
 @media screen and (max-width: 767px) {
   .popup__heading {
     font-size: 18px;
-    margin: 25px 0 75px;
+    margin: 25px auto 75px;
   }
 }
