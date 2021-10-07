@@ -1,14 +1,18 @@
 .profile__info {
   max-width: 336px;
   min-height: 73px;
-  margin-left: 24px;
+  margin-left: 29px;
   position: relative;
   align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 @media screen and (max-width: 1279px) {
   .profile__info {
-    width: 280px;
+    max-width: 300px;
   }
 }
 
@@ -25,5 +29,6 @@
     max-width: 189px;
     height: 54px;
     margin: 0 auto;
+    justify-content: center;
   }
 }

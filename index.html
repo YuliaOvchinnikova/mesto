@@ -41,10 +41,10 @@
           <div class="popup__container">
             <button
               type="button"
-              class="interactive-button popup__closebtn"
+              class="interactive-button popup__close-button"
             ></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form class="popup__form">
+            <form name="edit-personal-information" class="popup__form">
               <input
                 class="popup__input popup__input_type_name"
                 type="text"
@@ -59,7 +59,9 @@
                 name="description"
                 placeholder="Исследователь океана"
               />
-              <button type="submit" class="popup__savebtn">Сохранить</button>
+              <button type="submit" class="popup__save-button">
+                Сохранить
+              </button>
             </form>
           </div>
         </section>
@@ -73,11 +75,7 @@
             />
             <div class="place__container">
               <h2 class="place__name">Красноярск</h2>
-              <img
-                src="./images/like.svg"
-                alt="белое сердечко с черной обводной"
-                class="place__like"
-              />
+              <button type="button" class="place__like"></button>
             </div>
           </div>
 
@@ -89,11 +87,7 @@
             />
             <div class="place__container">
               <h2 class="place__name">Берген</h2>
-              <img
-                src="./images/like.svg"
-                alt="белое сердечко с черной обводной"
-                class="place__like"
-              />
+              <button type="button" class="place__like"></button>
             </div>
           </div>
 
@@ -105,11 +99,7 @@
             />
             <div class="place__container">
               <h2 class="place__name">Стокгольм</h2>
-              <img
-                src="./images/like.svg"
-                alt="белое сердечко с черной обводной"
-                class="place__like"
-              />
+              <button type="button" class="place__like"></button>
             </div>
           </div>
 
@@ -121,11 +111,7 @@
             />
             <div class="place__container">
               <h2 class="place__name">Амстердам</h2>
-              <img
-                src="./images/like.svg"
-                alt="белое сердечко с черной обводной"
-                class="place__like"
-              />
+              <button type="button" class="place__like"></button>
             </div>
           </div>
 
@@ -137,11 +123,7 @@
             />
             <div class="place__container">
               <h2 class="place__name">Хельсинки</h2>
-              <img
-                src="./images/like.svg"
-                alt="белое сердечко с черной обводной"
-                class="place__like"
-              />
+              <button type="button" class="place__like"></button>
             </div>
           </div>
 
@@ -153,11 +135,7 @@
             />
             <div class="place__container">
               <h2 class="place__name">Цюрих</h2>
-              <img
-                src="./images/like.svg"
-                alt="белое сердечко с черной обводной"
-                class="place__like"
-              />
+              <button type="button" class="place__like"></button>
             </div>
           </div>
         </section>
@@ -167,6 +145,6 @@
         </footer>
       </main>
     </div>
-    <script src="script.js"></script>
+    <script src="./script/script.js"></script>
   </body>
 </html>

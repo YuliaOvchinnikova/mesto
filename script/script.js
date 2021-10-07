@@ -6,7 +6,7 @@ let popup = document.querySelector('.popup');
 let form = document.querySelector('.popup__form');
 let popupName = document.querySelector('.popup__input_type_name');
 let popupDescription = document.querySelector('.popup__input_type_description');
-let closeButton = document.querySelector('.popup__closebtn');
+let closeButton = document.querySelector('.popup__close-button');
 
 function openPopup() {
   popup.classList.add('popup_opened');

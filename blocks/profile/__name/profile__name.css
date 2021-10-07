@@ -14,17 +14,13 @@
 
 @media screen and (max-width: 1279px) {
   .profile__name {
-    max-width: 280px;
     font-size: 37px;
-    margin-right: 11px;
   }
 }
 
 @media screen and (max-width: 1023px) {
   .profile__name {
-    max-width: 240px;
-    font-size: 35px;
-    margin-right: 9px;
+    font-size: 30px;
   }
 }
 
@@ -33,6 +29,5 @@
     max-width: 189px;
     font-size: 27px;
     margin: 0 0 9px 0;
-    text-align: center;
   }
 }
