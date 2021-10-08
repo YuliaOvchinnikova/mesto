@@ -3,13 +3,17 @@ let userName = document.querySelector('.profile__name');
 let userDescription = document.querySelector('.profile__description');
 
 let popup = document.querySelector('.popup');
-let form = document.querySelector('.popup__form');
-let popupName = document.querySelector('.popup__input_type_name');
-let popupDescription = document.querySelector('.popup__input_type_description');
+let form = popup.querySelector('.popup__form');
+let nameInputValue = form.querySelector('.popup__input_type_name');
+let descriptionInputValue = form.querySelector(
+  '.popup__input_type_description'
+);
 let closeButton = document.querySelector('.popup__close-button');
 
 function openPopup() {
   popup.classList.add('popup_opened');
+  nameInputValue.value = userName.innerHTML;
+  descriptionInputValue.value = userDescription.innerHTML;
 }
 
 function closePopup() {
@@ -18,12 +22,8 @@ function closePopup() {
 
 function saveData(event) {
   event.preventDefault();
-  if (popupName.value !== '') {
-    userName.textContent = popupName.value;
-  }
-  if (popupDescription.value !== '') {
-    userDescription.textContent = popupDescription.value;
-  }
+  userName.textContent = nameInputValue.value;
+  userDescription.textContent = descriptionInputValue.value;
 
   closePopup();
 }

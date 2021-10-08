@@ -1,7 +1,6 @@
 .profile__info {
   max-width: 336px;
-  min-height: 73px;
-  margin-left: 29px;
+  margin-left: 31px;
   position: relative;
   align-self: center;
   display: flex;
@@ -12,14 +11,13 @@
 
 @media screen and (max-width: 1279px) {
   .profile__info {
-    max-width: 300px;
+    max-width: 350px;
   }
 }
 
 @media screen and (max-width: 1023px) {
   .profile__info {
-    max-width: 250px;
-    min-height: 63px;
+    max-width: 270px;
     margin-left: 14px;
   }
 }
@@ -27,7 +25,6 @@
 @media screen and (max-width: 767px) {
   .profile__info {
     max-width: 189px;
-    height: 54px;
     margin: 0 auto;
     justify-content: center;
   }

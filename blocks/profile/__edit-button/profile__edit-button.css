@@ -5,6 +5,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid #FFFFFF;
+  transition: opacity 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 1279px) {

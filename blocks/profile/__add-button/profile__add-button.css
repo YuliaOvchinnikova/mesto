@@ -6,16 +6,12 @@
   background-position: center;
   background-size: 22px 22px;
   border: 1px solid #FFFFFF;
-  position: absolute;
-  right: 0;
-  top: 75px;
+  transition: opacity 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 1023px) {
   .profile__add-button {
     width: 130px;
-    height: 45px;
-    top: 65px;
   }
 }
 
@@ -25,6 +21,6 @@
     height: 50px;
     background-size: 16px 16px;
     position: unset;
-    margin: 26px auto 0;
+    margin: 33px auto 0;
   }
 }
