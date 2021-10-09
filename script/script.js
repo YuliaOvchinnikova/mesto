@@ -11,9 +11,9 @@ let descriptionInputValue = form.querySelector(
 let closeButton = document.querySelector('.popup__close-button');
 
 function openPopup() {
+  nameInputValue.value = userName.textContent;
+  descriptionInputValue.value = userDescription.textContent;
   popup.classList.add('popup_opened');
-  nameInputValue.value = userName.innerHTML;
-  descriptionInputValue.value = userDescription.innerHTML;
 }
 
 function closePopup() {
