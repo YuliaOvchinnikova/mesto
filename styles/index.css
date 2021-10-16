@@ -18,6 +18,7 @@
 @import url('../blocks/places/places.css');
 @import url('../blocks/place/place.css');
 @import url('../blocks/place/__image/place__image.css');
+@import url('../blocks/place/__trash/place__trash.css');
 @import url('../blocks/place/__container/place__container.css');
 @import url('../blocks/place/__name/place__name.css');
 @import url('../blocks/place/__like/place__like.css');
@@ -27,11 +28,25 @@
 @import url('../blocks/footer/__copyright/footer__copyright.css');
 
 @import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/_opacity_dark/popup_opacity_dark.css');
+
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
 @import url('../blocks/popup/__close-button/popup__close-button.css');
+@import url('../blocks/popup/__figure/popup__figure.css');
+@import url('../blocks/popup/__opened-image/popup__opened-image.css');
+@import url('../blocks/popup/__figcaption/popup__figcaption.css');
+
 @import url('../blocks/popup/__heading/popup__heading.css');
 @import url('../blocks/popup/__form/popup__form.css');
 @import url('../blocks/popup/__input/popup__input.css');
 @import url('../blocks/popup/__save-button/popup__save-button.css');
 @import url('../blocks/interactive-button/interactive-button.css');
+
+
+
+
+.popup__container_photo {
+  width: auto;
+  background-color: transparent;
+}
