@@ -17,7 +17,7 @@ let closeButtons = document.querySelectorAll('.popup__close-button');
 let popupAddPlace = document.querySelector('.popup_adding');
 let formAddPlace = popupAddPlace.querySelector('.popup__form');
 let placeNameInputValue = popupAddPlace.querySelector(
-  '.popup__input_type_name'
+  '.popup__input_type_city'
 );
 let placeLinkInputValue = popupAddPlace.querySelector(
   '.popup__input_type_link'
@@ -142,4 +142,10 @@ Array.from(closeButtons).forEach(function (closeButton) {
       closePopup(popupAddPlace);
     }
   });
+});
+
+window.addEventListener('load', () => {
+  document
+    .querySelectorAll('.popup')
+    .forEach((popup) => popup.classList.add('popup_transition'));
 });

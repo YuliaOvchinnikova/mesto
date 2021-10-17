@@ -29,24 +29,16 @@
 
 @import url('../blocks/popup/popup.css');
 @import url('../blocks/popup/_opacity_dark/popup_opacity_dark.css');
-
+@import url('../blocks/popup/_transition/popup_transition.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__container/_type_photo/popup__container_type_photo.css');
 @import url('../blocks/popup/__close-button/popup__close-button.css');
 @import url('../blocks/popup/__figure/popup__figure.css');
 @import url('../blocks/popup/__opened-image/popup__opened-image.css');
 @import url('../blocks/popup/__figcaption/popup__figcaption.css');
-
 @import url('../blocks/popup/__heading/popup__heading.css');
 @import url('../blocks/popup/__form/popup__form.css');
 @import url('../blocks/popup/__input/popup__input.css');
 @import url('../blocks/popup/__save-button/popup__save-button.css');
 @import url('../blocks/interactive-button/interactive-button.css');
-
-
-
-
-.popup__container_photo {
-  width: auto;
-  background-color: transparent;
-}

@@ -15,6 +15,7 @@
           class="header__logo"
         />
       </header>
+
       <main class="content">
         <section class="profile">
           <div class="profile__about-person">
@@ -40,7 +41,7 @@
           ></button>
         </section>
 
-        <section class="places">
+        <section class="places" aria-label="Фотографии мест">
           <template id="place">
             <div class="place">
               <img class="place__image" />
@@ -59,102 +60,6 @@
               </div>
             </div>
           </template>
-
-          <!-- <div class="place">
-            <img
-              src="./images/krasnoyarsk.jpeg"
-              alt="Зеленый хвойный лес в Красноярске."
-              class="place__image"
-            />
-            <div class="place__container">
-              <h2 class="place__name">Красноярск</h2>
-              <button
-                type="button"
-                aria-label="Лайкнуть место"
-                class="place__like"
-              ></button>
-            </div>
-          </div>
-
-          <div class="place">
-            <img
-              src="./images/bergen.jpeg"
-              alt="Туман в Бергене."
-              class="place__image"
-            />
-            <div class="place__container">
-              <h2 class="place__name">Берген</h2>
-              <button
-                type="button"
-                aria-label="Лайкнуть место"
-                class="place__like"
-              ></button>
-            </div>
-          </div>
-
-          <div class="place">
-            <img
-              src="./images/stockholm.jpeg"
-              alt="Метро Стокгольма."
-              class="place__image"
-            />
-            <div class="place__container">
-              <h2 class="place__name">Стокгольм</h2>
-              <button
-                type="button"
-                aria-label="Лайкнуть место"
-                class="place__like"
-              ></button>
-            </div>
-          </div>
-
-          <div class="place">
-            <img
-              src="./images/amsterdam.jpeg"
-              alt="Канал Амстердама."
-              class="place__image"
-            />
-            <div class="place__container">
-              <h2 class="place__name">Амстердам</h2>
-              <button
-                type="button"
-                aria-label="Лайкнуть место"
-                class="place__like"
-              ></button>
-            </div>
-          </div>
-
-          <div class="place">
-            <img
-              src="./images/helsinki.jpeg"
-              alt="Скульптура Сибелиус в Хельсинки."
-              class="place__image"
-            />
-            <div class="place__container">
-              <h2 class="place__name">Хельсинки</h2>
-              <button
-                type="button"
-                aria-label="Лайкнуть место"
-                class="place__like"
-              ></button>
-            </div>
-          </div>
-
-          <div class="place">
-            <img
-              src="./images/zurich.jpeg"
-              alt="Вид со смотровой на Цюрих."
-              class="place__image"
-            />
-            <div class="place__container">
-              <h2 class="place__name">Цюрих</h2>
-              <button
-                type="button"
-                aria-label="Лайкнуть место"
-                class="place__like"
-              ></button>
-            </div>
-          </div> -->
         </section>
       </main>
 
@@ -208,10 +113,10 @@
           <h2 class="popup__heading">Новое место</h2>
           <form name="add-new-card" class="popup__form">
             <input
-              class="popup__input popup__input_type_name"
+              class="popup__input popup__input_type_city"
               type="text"
-              id="name"
-              name="name"
+              id="city"
+              name="city"
               placeholder="Название"
               required
             />
@@ -235,14 +140,14 @@
       </div>
 
       <div class="popup popup_photo popup_opacity_dark">
-        <div class="popup__container popup__container_photo">
+        <div class="popup__container popup__container_type_photo">
           <button
             type="button"
             aria-label="Закрыть редактирование информации"
             class="interactive-button popup__close-button"
           ></button>
           <figure class="popup__figure">
-            <img class="popup__opened-image" />
+            <img class="popup__opened-image" src="address" alt="alt" />
             <figcaption class="popup__figcaption"></figcaption>
           </figure>
         </div>
