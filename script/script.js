@@ -114,7 +114,7 @@ function addCard() {
   placeLinkInputValue.value = '';
 }
 
-function openPopup(popup) {
+function resetValidation(popup) {
   const errorSpans = [...popup.querySelectorAll('.popup__input-error')];
   if (errorSpans) {
     errorSpans.forEach((span) =>
@@ -132,12 +132,16 @@ function openPopup(popup) {
     saveButton.classList.add('popup__save-button_disabled');
     saveButton.disabled = true;
   }
+}
+
+function openPopup(popup) {
   document.addEventListener('keydown', closePopupByEsc);
   popup.classList.add('popup_opened');
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 function saveData() {
@@ -149,12 +153,14 @@ function saveData() {
 editButton.addEventListener('click', () => {
   nameInputValue.value = userName.textContent;
   descriptionInputValue.value = userDescription.textContent;
+  resetValidation(popupEdit);
   openPopup(popupEdit);
 });
 
 addButton.addEventListener('click', () => {
   placeNameInputValue.value = '';
   placeLinkInputValue.value = '';
+  resetValidation(popupAddPlace);
   openPopup(popupAddPlace);
 });
 
@@ -191,10 +197,10 @@ const config = {
 enableValidation(config);
 
 function closePopupByEsc(evt) {
+  const openedPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
-    popups.forEach((popup) => closePopup(popup));
+    closePopup(openedPopup);
   }
-  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 window.addEventListener('load', () => {
