@@ -1,4 +1,6 @@
 import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+
 import { initialCards } from '../utils/constants.js';
 import { openPopup, closePopup } from './popupFunctions.js';
 
@@ -12,7 +14,6 @@ const addButton = document.querySelector('.profile__add-button');
 const popupEdit = document.querySelector('.popup_edit');
 const formEdit = popupEdit.querySelector('.popup__form');
 const nameInputValue = formEdit.querySelector('.popup__input_type_name');
-
 const descriptionInputValue = formEdit.querySelector(
   '.popup__input_type_description'
 );
@@ -50,6 +51,14 @@ function addCard() {
   closePopup(popupAddPlace);
   placeNameInputValue.value = '';
   placeLinkInputValue.value = '';
+}
+
+function enableValidation(config) {
+  const formList = [...document.querySelectorAll(config.formSelector)];
+  formList.forEach((formElement) => {
+    const formValidator = new FormValidator(config, formElement);
+    formValidator.enableValidation();
+  });
 }
 
 function resetValidation(popup) {
