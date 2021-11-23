@@ -1,6 +1,5 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-
 import { initialCards } from '../utils/constants.js';
 import { openPopup, closePopup } from './popupFunctions.js';
 
@@ -33,6 +32,18 @@ const placeLinkInputValue = popupAddPlace.querySelector(
 // Places elements
 const placeContainer = document.querySelector('.places');
 
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active',
+};
+
+const editFormValidator = new FormValidator(config, formEdit);
+const addFormValidator = new FormValidator(config, formAddPlace);
+
 function createCard(name, link, alt) {
   const card = new Card(name, link, alt, '#place');
   const cardElement = card.generate();
@@ -53,34 +64,6 @@ function addCard() {
   placeLinkInputValue.value = '';
 }
 
-function enableValidation(config) {
-  const formList = [...document.querySelectorAll(config.formSelector)];
-  formList.forEach((formElement) => {
-    const formValidator = new FormValidator(config, formElement);
-    formValidator.enableValidation();
-  });
-}
-
-function resetValidation(popup) {
-  const errorSpans = [...popup.querySelectorAll('.popup__input-error')];
-  if (errorSpans) {
-    errorSpans.forEach((span) =>
-      span.classList.remove('popup__input-error_active')
-    );
-  }
-  const inputs = [...popup.querySelectorAll('.popup__input')];
-  if (inputs) {
-    inputs.forEach((input) =>
-      input.classList.remove('popup__input_type_error')
-    );
-  }
-  const saveButton = popup.querySelector('.popup__save-button');
-  if (saveButton) {
-    saveButton.classList.add('popup__save-button_disabled');
-    saveButton.disabled = true;
-  }
-}
-
 function saveData() {
   userName.textContent = nameInputValue.value;
   userDescription.textContent = descriptionInputValue.value;
@@ -90,14 +73,14 @@ function saveData() {
 editButton.addEventListener('click', () => {
   nameInputValue.value = userName.textContent;
   descriptionInputValue.value = userDescription.textContent;
-  resetValidation(popupEdit);
+  editFormValidator.resetValidation();
   openPopup(popupEdit);
 });
 
 addButton.addEventListener('click', () => {
   placeNameInputValue.value = '';
   placeLinkInputValue.value = '';
-  resetValidation(popupAddPlace);
+  addFormValidator.resetValidation();
   openPopup(popupAddPlace);
 });
 
@@ -122,16 +105,8 @@ formAddPlace.addEventListener('submit', (evt) => {
   addCard();
 });
 
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
-};
-
-enableValidation(config);
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 window.addEventListener('load', () => {
   popups.forEach((popup) => popup.classList.add('popup_transition'));
