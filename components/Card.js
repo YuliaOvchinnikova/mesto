@@ -45,6 +45,7 @@ export default class Card {
       .querySelector('.place__image')
       .addEventListener('click', (event) => {
         openedPhotoName.textContent = event.target.alt;
+        openedPhoto.alt = event.target.alt;
         openedPhoto.src = event.target.src;
         openPopup(popupOpenPhoto);
       });
