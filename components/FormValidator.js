@@ -2,33 +2,18 @@ export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
-    this._buttonElement = this._formElement.querySelector(
+    this._saveButton = this._formElement.querySelector(
       this._config.submitButtonSelector
     );
-    this._errorSpans = [
-      ...this._formElement.querySelectorAll('.popup__input-error'),
-    ];
-    this._inputs = [...this._formElement.querySelectorAll('.popup__input')];
-    this._saveButton = this._formElement.querySelector('.popup__save-button');
     this._inputList = [
       ...this._formElement.querySelectorAll(this._config.inputSelector),
     ];
   }
 
   resetValidation() {
-    if (this._errorSpans) {
-      this._errorSpans.forEach((span) =>
-        span.classList.remove('popup__input-error_active')
-      );
-    }
-    if (this._inputs) {
-      this._inputs.forEach((input) =>
-        input.classList.remove('popup__input_type_error')
-      );
-    }
-    if (this._saveButton) {
-      this._saveButton.classList.add('popup__save-button_disabled');
-      this._saveButton.disabled = true;
+    this._toggleButtonState();
+    if (this._inputList) {
+      this._inputList.forEach((input) => this._hideError(input));
     }
   }
 
@@ -58,11 +43,11 @@ export default class FormValidator {
 
   _toggleButtonState = () => {
     if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._config.inactiveButtonClass);
-      this._buttonElement.disabled = true;
+      this._saveButton.classList.add(this._config.inactiveButtonClass);
+      this._saveButton.disabled = true;
     } else {
-      this._buttonElement.classList.remove(this._config.inactiveButtonClass);
-      this._buttonElement.disabled = false;
+      this._saveButton.classList.remove(this._config.inactiveButtonClass);
+      this._saveButton.disabled = false;
     }
   };
 
