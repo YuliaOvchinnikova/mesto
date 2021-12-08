@@ -1,16 +1,10 @@
-import { openPopup } from '../script/popupFunctions.js';
-
-// Popup to open photo
-const popupOpenPhoto = document.querySelector('.popup_photo');
-const openedPhotoName = popupOpenPhoto.querySelector('.popup__figcaption');
-const openedPhoto = popupOpenPhoto.querySelector('.popup__opened-image');
-
 export default class Card {
-  constructor(name, link, alt, selector) {
+  constructor(name, link, alt, selector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._alt = alt;
     this._selector = selector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -43,11 +37,8 @@ export default class Card {
   _setEventListener() {
     this._element
       .querySelector('.place__image')
-      .addEventListener('click', (event) => {
-        openedPhotoName.textContent = event.target.alt;
-        openedPhoto.alt = event.target.alt;
-        openedPhoto.src = event.target.src;
-        openPopup(popupOpenPhoto);
+      .addEventListener('click', () => {
+        this._handleCardClick(this._link, this._name, this._alt);
       });
 
     this._element

@@ -3,14 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./styles/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <title>Место</title>
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
-        <img
+        <!-- <img
           src="./images/logo.svg"
+          alt="Логотип сайта Место"
+          class="header__logo"
+        /> -->
+        <img
+          src="<%=require('./images/logo.svg')%>"
           alt="Логотип сайта Место"
           class="header__logo"
         />
@@ -19,8 +24,13 @@
       <main class="content">
         <section class="profile">
           <div class="profile__about-person">
-            <img
+            <!-- <img
               src="./images/profile_photo.jpg"
+              alt="Лицо улыбающейся девушки."
+              class="profile__photo"
+            /> -->
+            <img
+              src="<%=require('./images/profile_photo.jpg')%>"
               alt="Лицо улыбающейся девушки."
               class="profile__photo"
             />
@@ -165,16 +175,12 @@
             class="interactive-button popup__close-button"
           ></button>
           <figure class="popup__figure">
-            <img
-              class="popup__opened-image"
-              src="./images/krasnoyarsk.jpeg"
-              alt="alt"
-            />
+            <img class="popup__opened-image" src="" alt="alt" />
             <figcaption class="popup__figcaption"></figcaption>
           </figure>
         </div>
       </div>
     </div>
-    <script type="module" src="./script/index.js"></script>
+    <!-- <script type="module" src="./index.js"></script> -->
   </body>
 </html>

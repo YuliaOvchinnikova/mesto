@@ -1,7 +1,11 @@
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import { initialCards } from '../utils/constants.js';
-import { openPopup, closePopup } from './popupFunctions.js';
+import './styles/index.css'; // добавьте импорт главного файла стилей
+import Card from './components/Card.js';
+import FormValidator from './components/FormValidator.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import { initialCards } from './utils/constants.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import UserInfo from './components/UserInfo.js';
+import Section from './components/Section.js';
 
 // Profile elements
 const editButton = document.querySelector('.profile__edit-button');
@@ -29,9 +33,6 @@ const placeLinkInputValue = popupAddPlace.querySelector(
   '.popup__input_type_link'
 );
 
-// Places elements
-const placeContainer = document.querySelector('.places');
-
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -40,69 +41,62 @@ const config = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
 };
-
-const editFormValidator = new FormValidator(config, formEdit);
-const addFormValidator = new FormValidator(config, formAddPlace);
+const userInfo = new UserInfo({
+  nameSelector: '.profile__name',
+  descriptionSelector: '.profile__description',
+});
 
 function createCard(name, link, alt) {
-  const card = new Card(name, link, alt, '#place');
+  const card = new Card(name, link, alt, '#place', (link, name, alt) => {
+    popupPhoto.open(link, name, alt);
+    popupPhoto.setEventListeners();
+  });
   const cardElement = card.generate();
   return cardElement;
 }
 
-initialCards.forEach(({ name, link, alt }) => {
-  const card = createCard(name, link, alt);
-  placeContainer.append(card);
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: ({ name, link, alt }) => {
+      cardList.addItem(createCard(name, link, alt));
+    },
+  },
+  '.places'
+);
+cardList.renderItems();
+
+const editFormValidator = new FormValidator(config, formEdit);
+const addFormValidator = new FormValidator(config, formAddPlace);
+const popupPhoto = new PopupWithImage('.popup_photo');
+const popupEditProfile = new PopupWithForm('.popup_edit', (inputs) => {
+  userInfo.setUserInfo(inputs.name, inputs.description);
+  editFormValidator.resetValidation();
+  popupEditProfile.close();
 });
+popupEditProfile.setEventListeners();
 
-function addCard() {
-  placeContainer.prepend(
-    createCard(placeNameInputValue.value, placeLinkInputValue.value, undefined)
-  );
-  closePopup(popupAddPlace);
-  placeNameInputValue.value = '';
-  placeLinkInputValue.value = '';
-}
-
-function saveData() {
-  userName.textContent = nameInputValue.value;
-  userDescription.textContent = descriptionInputValue.value;
-  closePopup(popupEdit);
-}
+const popupAddCard = new PopupWithForm('.popup_adding', ({ city, link }) => {
+  const card = createCard(city, link, city);
+  cardList.addItem(card);
+  addFormValidator.resetValidation();
+  popupAddCard.close();
+});
+popupAddCard.setEventListeners();
 
 editButton.addEventListener('click', () => {
-  nameInputValue.value = userName.textContent;
-  descriptionInputValue.value = userDescription.textContent;
+  const { name, description } = userInfo.getUserInfo();
+  nameInputValue.value = name;
+  descriptionInputValue.value = description;
   editFormValidator.resetValidation();
-  openPopup(popupEdit);
+  popupEditProfile.open();
 });
 
 addButton.addEventListener('click', () => {
   placeNameInputValue.value = '';
   placeLinkInputValue.value = '';
   addFormValidator.resetValidation();
-  openPopup(popupAddPlace);
-});
-
-popups.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    if (
-      evt.target.classList.contains('popup__close-button') ||
-      evt.target.classList.contains('popup')
-    ) {
-      closePopup(popup);
-    }
-  });
-});
-
-formEdit.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  saveData();
-});
-
-formAddPlace.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  addCard();
+  popupAddCard.open();
 });
 
 editFormValidator.enableValidation();
