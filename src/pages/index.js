@@ -1,11 +1,11 @@
-import './styles/index.css'; // добавьте импорт главного файла стилей
-import Card from './components/Card.js';
-import FormValidator from './components/FormValidator.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import { initialCards } from './utils/constants.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import UserInfo from './components/UserInfo.js';
-import Section from './components/Section.js';
+import './index.css'; // добавьте импорт главного файла стилей
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import { initialCards, config } from '../utils/constants.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
 
 // Profile elements
 const editButton = document.querySelector('.profile__edit-button');
@@ -33,33 +33,19 @@ const placeLinkInputValue = popupAddPlace.querySelector(
   '.popup__input_type_link'
 );
 
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
-};
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   descriptionSelector: '.profile__description',
 });
 
-function createCard(name, link, alt) {
-  const card = new Card(name, link, alt, '#place', (link, name, alt) => {
-    popupPhoto.open(link, name, alt);
-    popupPhoto.setEventListeners();
-  });
-  const cardElement = card.generate();
-  return cardElement;
-}
-
 const cardList = new Section(
   {
     items: initialCards,
-    renderer: ({ name, link, alt }) => {
-      cardList.addItem(createCard(name, link, alt));
+    renderer: (item) => {
+      const card = new Card(item, '#place', (item) => {
+        popupPhoto.open(item);
+      });
+      return card.generate();
     },
   },
   '.places'
@@ -69,17 +55,15 @@ cardList.renderItems();
 const editFormValidator = new FormValidator(config, formEdit);
 const addFormValidator = new FormValidator(config, formAddPlace);
 const popupPhoto = new PopupWithImage('.popup_photo');
+popupPhoto.setEventListeners();
 const popupEditProfile = new PopupWithForm('.popup_edit', (inputs) => {
   userInfo.setUserInfo(inputs.name, inputs.description);
-  editFormValidator.resetValidation();
   popupEditProfile.close();
 });
 popupEditProfile.setEventListeners();
 
-const popupAddCard = new PopupWithForm('.popup_adding', ({ city, link }) => {
-  const card = createCard(city, link, city);
-  cardList.addItem(card);
-  addFormValidator.resetValidation();
+const popupAddCard = new PopupWithForm('.popup_adding', (item) => {
+  cardList.addItem(item);
   popupAddCard.close();
 });
 popupAddCard.setEventListeners();
@@ -93,8 +77,6 @@ editButton.addEventListener('click', () => {
 });
 
 addButton.addEventListener('click', () => {
-  placeNameInputValue.value = '';
-  placeLinkInputValue.value = '';
   addFormValidator.resetValidation();
   popupAddCard.open();
 });

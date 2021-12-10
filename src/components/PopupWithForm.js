@@ -23,22 +23,13 @@ export default class PopupWithForm extends Popup {
       const inputs = this._getInputValues();
       this._funcSubmit(inputs);
     });
-
-    this._popup.addEventListener('click', (evt) => {
-      if (
-        evt.target.classList.contains('popup__close-button') ||
-        evt.target.classList.contains('popup')
-      ) {
-        this.close();
-      }
-    });
+    super.setEventListeners();
   }
 
   close() {
     this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this._handleEscClose.bind(this));
-    this._inputs.forEach((input) => {
-      input.value = '';
-    });
+    super.close();
+    this._form.reset();
   }
 }
