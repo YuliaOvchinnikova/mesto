@@ -8,33 +8,42 @@ const zurichImg = new URL('../images/zurich.jpeg', import.meta.url);
 
 export const initialCards = [
   {
-    name: 'Красноярск',
+    city: 'Красноярск',
     link: krasnoyarskImg,
     alt: 'Склон, на котором растет хвойный хеленый лес в Красноярске',
   },
   {
-    name: 'Берген',
+    city: 'Берген',
     link: bergenImg,
     alt: 'Храм в Бергене на переднем плане, позади холмы и туман',
   },
   {
-    name: 'Стокгольм',
+    city: 'Стокгольм',
     link: stockholmImg,
     alt: 'Станция метро в Стокгольме в скале',
   },
   {
-    name: 'Амстердам',
+    city: 'Амстердам',
     link: amsterdamImg,
     alt: 'Лодка на канале в Амстердаме',
   },
   {
-    name: 'Хельсинки',
+    city: 'Хельсинки',
     link: helsinkiImg,
     alt: 'Памятник Сибелиусу в Хельсинки',
   },
   {
-    name: 'Цюрих',
+    city: 'Цюрих',
     link: zurichImg,
     alt: 'Вид со смотровой площадки на центр города Цюрих',
   },
 ];
+
+export const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active',
+};
