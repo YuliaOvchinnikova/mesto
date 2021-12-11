@@ -17,9 +17,10 @@ export default class FormValidator {
     }
   }
 
-  _showError = (input) => {
+  _showError = (input, errorMessage) => {
     input.classList.add(this._config.inputErrorClass);
     const error = this._formElement.querySelector(`.${input.id}-error`);
+    error.textContent = errorMessage;
     error.classList.add(this._config.errorClass);
   };
 
@@ -27,11 +28,12 @@ export default class FormValidator {
     input.classList.remove(this._config.inputErrorClass);
     const error = this._formElement.querySelector(`.${input.id}-error`);
     error.classList.remove(this._config.errorClass);
+    error.textContent = '';
   };
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showError(inputElement);
+      this._showError(inputElement, inputElement.validationMessage);
     } else {
       this._hideError(inputElement);
     }
