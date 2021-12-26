@@ -121,7 +121,7 @@ popupPhoto.setEventListeners();
 
 const popupEditProfile = new PopupWithForm('.popup_edit', (inputs) => {
   api
-    .changeUserInfo(inputs.name, inputs.about)
+    .changeUserInfo(inputs.username, inputs.about)
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about);
       popupEditProfile.close();
