@@ -25,7 +25,7 @@ overflow: hidden;
 
 В проекте использованы class-ы. Написана функциональность через призму ООП.
 
-[Сслыка на Github Pages](https://yuliaovchinnikova.github.io/mesto/index.html)
+[Сслыка на Github Pages](https://yuliaovchinnikova.github.io/mesto/)
 
 ### Обзор
 

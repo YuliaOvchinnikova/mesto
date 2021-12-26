@@ -2,6 +2,7 @@
   max-width: 282px;
   min-height: 282px;
   object-fit: cover;
+  object-position: top;
   border-radius: 10px 10px 0 0;
 }
 
