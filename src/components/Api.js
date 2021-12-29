@@ -4,6 +4,14 @@ class Api {
     this._token = token;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+  }
+
   // get initial cards from the server
   getInitialCards() {
     return fetch(`${this._address}/cards`, {
@@ -11,13 +19,7 @@ class Api {
         authorization: this._token,
         'Content-Type': 'application/json',
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 
   // add new card to the server
@@ -29,13 +31,7 @@ class Api {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name: name, link: link }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 
   // delete a card on the server
@@ -46,13 +42,7 @@ class Api {
         authorization: this._token,
         'Content-Type': 'application/json',
       },
-    }).then((res) => {
-      if (res.ok) {
-        return true;
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 
   // get user info from the server
@@ -62,13 +52,7 @@ class Api {
         authorization: this._token,
         'Content-Type': 'application/json',
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 
   // like a card on the server
@@ -79,13 +63,7 @@ class Api {
         authorization: this._token,
         'Content-Type': 'application/json',
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 
   // delete a card on the server
@@ -96,13 +74,7 @@ class Api {
         authorization: this._token,
         'Content-Type': 'application/json',
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 
   // change user name and about info on the server
@@ -117,13 +89,7 @@ class Api {
         name: name,
         about: about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 
   // change user avatar on the server
@@ -138,13 +104,7 @@ class Api {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResponse);
   }
 }
 
