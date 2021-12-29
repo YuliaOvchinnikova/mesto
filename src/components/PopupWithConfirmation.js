@@ -16,6 +16,7 @@ export default class PopupWithConfirmation extends Popup {
       // change button text while pending going
       this._saveBtn.textContent = 'Сохранение...';
     });
+    super.setEventListeners();
   }
 
   open(item, event) {

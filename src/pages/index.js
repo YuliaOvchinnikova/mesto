@@ -44,10 +44,13 @@ const api = new Api({
 const popupDeleteConfirmation = new PopupWithConfirmation(
   '.popup_delete',
   (item, event) => {
-    api.deleteCard(item._id).then(() => {
-      event.target.closest('.place').remove();
-      popupDeleteConfirmation.close();
-    });
+    api
+      .deleteCard(item._id)
+      .then(() => {
+        event.target.closest('.place').remove();
+        popupDeleteConfirmation.close();
+      })
+      .catch((err) => console.log('Error: ' + err));
   }
 );
 popupDeleteConfirmation.setEventListeners();
@@ -81,18 +84,17 @@ const cardList = new Section(
 );
 cardList.renderItems();
 
-api
-  .getUserInfo()
-  .then((res) => {
-    userInfo.setUserInfo(res.name, res.about, res.avatar, res._id);
-    api
-      .getInitialCards()
-      .then((res) => {
-        res.forEach((card) => {
-          cardList.addItem(card);
-        });
-      })
-      .catch((err) => console.log('Error: ' + err));
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(
+      userData.name,
+      userData.about,
+      userData.avatar,
+      userData._id
+    );
+    cards.forEach((card) => {
+      cardList.addItem(card);
+    });
   })
   .catch((err) => console.log('Error: ' + err));
 
@@ -103,8 +105,8 @@ const changeAvatarFormValidator = new FormValidator(config, formChangeAvatar);
 const popupChangeAvatar = new PopupWithForm('.popup_change', (inputs) => {
   api
     .changeAvatar(inputs.avatar)
-    .then((res) => {
-      userInfo.setUserInfo(res.name, res.about, res.avatar, res.id);
+    .then(({ name, about, avatar, id }) => {
+      userInfo.setUserInfo(name, about, avatar, id);
       popupChangeAvatar.close();
     })
     .catch((err) => console.log('Error: ' + err));
